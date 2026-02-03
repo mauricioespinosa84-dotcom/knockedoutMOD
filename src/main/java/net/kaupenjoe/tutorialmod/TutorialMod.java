@@ -8,12 +8,14 @@ import net.kaupenjoe.tutorialmod.entity.ModEntities;
 import net.kaupenjoe.tutorialmod.entity.client.TigerRenderer;
 import net.kaupenjoe.tutorialmod.item.ModCreativeModeTabs;
 import net.kaupenjoe.tutorialmod.item.ModItems;
+import net.kaupenjoe.tutorialmod.network.ModMessages;
 import net.kaupenjoe.tutorialmod.sound.ModSounds;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -53,7 +55,7 @@ public class TutorialMod {
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
-
+        event.enqueueWork(ModMessages::register);
     }
 
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
@@ -119,6 +121,11 @@ public class TutorialMod {
         public static void onClientSetup(FMLClientSetupEvent event) {
             EntityRenderers.register(ModEntities.TIGER.get(), TigerRenderer::new);
             BlockEntityRenderers.register(ModBlockEntities.ANIMATED_BLOCK_ENTITY.get(), AnimatedBlockRenderer::new);
+        }
+
+        @SubscribeEvent
+        public static void onRegisterKeyMappings(RegisterKeyMappingsEvent event) {
+            net.kaupenjoe.tutorialmod.client.ModKeyBindings.register(event);
         }
     }
 }

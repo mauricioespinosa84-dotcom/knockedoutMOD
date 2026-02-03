@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "net.kaupenjoe.tutorialmod.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "mixins.tutorialmod.refmap.json",
+  "client": [
+    "client.HumanoidModelMixin",
+    "client.PlayerModelAccessor"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

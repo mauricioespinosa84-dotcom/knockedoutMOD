@@ -25,5 +25,7 @@
   "block.tutorialmod.ebony_leaves": "Ebony Leaves",
   "block.tutorialmod.ebony_sapling": "Ebony Sapling",
 
-  "creativemodetab.tutorial_tab": "Tutorial Tab"
+  "creativemodetab.tutorial_tab": "Tutorial Tab",
+  "key.categories.tutorialmod": "Tutorial Mod",
+  "key.tutorialmod.grab": "Grab / Throw"
 }
