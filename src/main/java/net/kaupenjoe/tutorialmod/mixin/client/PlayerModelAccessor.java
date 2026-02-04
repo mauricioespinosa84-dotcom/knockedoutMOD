@@ -9,4 +9,7 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 public interface PlayerModelAccessor {
     @Accessor("rightSleeve")
     ModelPart tutorialmod$getRightSleeve();
+
+    @Accessor("leftSleeve")
+    ModelPart tutorialmod$getLeftSleeve();
 }

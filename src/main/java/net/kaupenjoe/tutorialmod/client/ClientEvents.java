@@ -4,6 +4,7 @@ import com.mojang.math.Axis;
 import net.kaupenjoe.tutorialmod.TutorialMod;
 import net.kaupenjoe.tutorialmod.client.grab.GrabArmPoseHelper;
 import net.kaupenjoe.tutorialmod.client.KnockdownClientState;
+import net.kaupenjoe.tutorialmod.client.GrabbedClientState;
 import net.kaupenjoe.tutorialmod.client.grab.GrabArmPoseHelper.GrabArmPose;
 import net.kaupenjoe.tutorialmod.network.ModMessages;
 import net.kaupenjoe.tutorialmod.network.packet.C2SGrabActionPacket;
@@ -52,6 +53,7 @@ public final class ClientEvents {
     @SubscribeEvent
     public static void onClientLogout(ClientPlayerNetworkEvent.LoggingOut event) {
         GrabClientState.clear();
+        GrabbedClientState.clear();
         GrabArmPoseHelper.clear();
         KnockdownClientState.clear();
     }

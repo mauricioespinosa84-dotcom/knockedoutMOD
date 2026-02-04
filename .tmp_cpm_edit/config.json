@@ -1,0 +1,218 @@
+{
+  "removeBedOffset": false,
+  "scaling": 0.0,
+  "skinType": "default",
+  "textures": {
+    "skin": {
+      "customGridSize": false,
+      "anim": []
+    }
+  },
+  "enableInvisGlow": false,
+  "hideHeadIfSkull": true,
+  "elements": [
+    {
+      "disableVanillaAnim": false,
+      "pos": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "nameColor": 0,
+      "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "show": true,
+      "name": "",
+      "id": "head",
+      "locked": false,
+      "showInEditor": true,
+      "dup": false
+    },
+    {
+      "disableVanillaAnim": false,
+      "pos": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "nameColor": 0,
+      "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "show": true,
+      "name": "",
+      "id": "body",
+      "locked": false,
+      "showInEditor": true,
+      "dup": false
+    },
+    {
+      "disableVanillaAnim": false,
+      "pos": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "nameColor": 0,
+      "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "show": true,
+      "name": "",
+      "id": "left_arm",
+      "locked": false,
+      "showInEditor": true,
+      "dup": false
+    },
+    {
+      "disableVanillaAnim": false,
+      "pos": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "nameColor": 0,
+      "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "show": true,
+      "name": "",
+      "id": "right_arm",
+      "locked": false,
+      "showInEditor": true,
+      "dup": false
+    },
+    {
+      "disableVanillaAnim": false,
+      "pos": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "nameColor": 0,
+      "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "show": true,
+      "name": "",
+      "id": "left_leg",
+      "locked": false,
+      "showInEditor": true,
+      "dup": false
+    },
+    {
+      "disableVanillaAnim": false,
+      "pos": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "nameColor": 0,
+      "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "show": true,
+      "name": "",
+      "id": "right_leg",
+      "locked": false,
+      "showInEditor": true,
+      "dup": false
+    }
+  ],
+  "skinSize": {
+    "x": 64,
+    "y": 64
+  },
+  "version": 1,
+  "removeArmorOffset": true,
+  "scalingEx": {
+    "mining_speed": 1.0,
+    "hitbox_width": 1.0,
+    "reach": 1.0,
+    "attack_speed": 1.0,
+    "jump_height": 1.0,
+    "render_rotation": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "step_height": 1.0,
+    "attack_knockback": 1.0,
+    "defense": 1.0,
+    "hitbox_height": 1.0,
+    "fall_damage": 1.0,
+    "attack_dmg": 1.0,
+    "height": 1.0,
+    "projectile_dmg": 1.0,
+    "eye_height": 1.0,
+    "third_person": 1.0,
+    "motion": 1.0,
+    "flight_speed": 1.0,
+    "mob_visibility": 1.0,
+    "knockback_resist": 1.0,
+    "health": 1.0,
+    "view_bobbing": 1.0,
+    "explosion_dmg": 1.0,
+    "safe_fall_distance": 1.0,
+    "width": 1.0,
+    "render_scale": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "render_position": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0
+    }
+  },
+  "firstPersonHand": {
+    "left": {
+      "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      }
+    },
+    "right": {
+      "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      }
+    }
+  }
+}

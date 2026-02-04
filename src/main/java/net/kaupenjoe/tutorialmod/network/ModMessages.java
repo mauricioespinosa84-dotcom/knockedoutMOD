@@ -2,6 +2,7 @@ package net.kaupenjoe.tutorialmod.network;
 
 import net.kaupenjoe.tutorialmod.TutorialMod;
 import net.kaupenjoe.tutorialmod.network.packet.C2SGrabActionPacket;
+import net.kaupenjoe.tutorialmod.network.packet.S2CGrabbedStatePacket;
 import net.kaupenjoe.tutorialmod.network.packet.S2CGrabStatePacket;
 import net.kaupenjoe.tutorialmod.network.packet.S2CKnockdownStatePacket;
 import net.minecraft.resources.ResourceLocation;
@@ -38,6 +39,12 @@ public final class ModMessages {
                 .consumerMainThread(S2CGrabStatePacket::handle)
                 .add();
 
+        CHANNEL.messageBuilder(S2CGrabbedStatePacket.class, packetId++, NetworkDirection.PLAY_TO_CLIENT)
+                .decoder(S2CGrabbedStatePacket::new)
+                .encoder(S2CGrabbedStatePacket::toBytes)
+                .consumerMainThread(S2CGrabbedStatePacket::handle)
+                .add();
+
         CHANNEL.messageBuilder(S2CKnockdownStatePacket.class, packetId++, NetworkDirection.PLAY_TO_CLIENT)
                 .decoder(S2CKnockdownStatePacket::new)
                 .encoder(S2CKnockdownStatePacket::toBytes)
@@ -51,5 +58,9 @@ public final class ModMessages {
 
     public static void sendToTrackingAndSelf(Object message, Entity entity) {
         CHANNEL.send(PacketDistributor.TRACKING_ENTITY_AND_SELF.with(() -> entity), message);
+    }
+
+    public static void sendToAll(Object message) {
+        CHANNEL.send(PacketDistributor.ALL.noArg(), message);
     }
 }
