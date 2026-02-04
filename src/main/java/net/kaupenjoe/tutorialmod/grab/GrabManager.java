@@ -22,6 +22,7 @@ public final class GrabManager {
     private static final int KNOCKDOWN_TICKS = 120;
     private static final double THROW_STRENGTH = 1.2D;
     private static final double THROW_UP = 0.4D;
+    private static final float LOW_HEALTH_FRACTION = 0.30F;
 
     private GrabManager() {
     }
@@ -51,6 +52,10 @@ public final class GrabManager {
         }
 
         if (GrabState.getGrabbedBy(target) != null || GrabState.getKnockdownTicks(target) > 0) {
+            return;
+        }
+
+        if (!isLowHealth(target)) {
             return;
         }
 
@@ -118,15 +123,11 @@ public final class GrabManager {
 
     private static void throwTarget(ServerPlayer grabber, UUID targetId) {
         ServerPlayer target = grabber.server.getPlayerList().getPlayer(targetId);
-        GrabState.setGrabbing(grabber, null);
-        ModMessages.sendToTrackingAndSelf(new S2CGrabStatePacket(grabber.getUUID(), false), grabber);
+        releaseGrab(grabber, target);
 
-        if (target == null) {
+        if (target == null || !isLowHealth(target)) {
             return;
         }
-
-        GrabState.setGrabbedBy(target, null);
-        target.setNoGravity(false);
 
         Vec3 look = grabber.getLookAngle();
         Vec3 velocity = new Vec3(look.x * THROW_STRENGTH, look.y * THROW_STRENGTH + THROW_UP, look.z * THROW_STRENGTH);
@@ -145,8 +146,12 @@ public final class GrabManager {
 
         ServerPlayer grabber = grabbed.server.getPlayerList().getPlayer(grabberId);
         if (grabber == null || !grabber.isAlive() || grabber.level() != grabbed.level()) {
-            GrabState.setGrabbedBy(grabbed, null);
-            grabbed.setNoGravity(false);
+            releaseGrab(grabber, grabbed);
+            return;
+        }
+
+        if (!isLowHealth(grabbed)) {
+            releaseGrab(grabber, grabbed);
             return;
         }
 
@@ -185,6 +190,21 @@ public final class GrabManager {
         Vec3 eye = grabber.getEyePosition(1.0F);
         Vec3 forward = grabber.getLookAngle();
         return eye.add(forward.scale(HOLD_DISTANCE)).add(0.0D, HOLD_EYE_OFFSET, 0.0D);
+    }
+
+    private static boolean isLowHealth(ServerPlayer player) {
+        return player.getHealth() <= player.getMaxHealth() * LOW_HEALTH_FRACTION;
+    }
+
+    private static void releaseGrab(ServerPlayer grabber, ServerPlayer grabbed) {
+        if (grabber != null) {
+            GrabState.setGrabbing(grabber, null);
+            ModMessages.sendToTrackingAndSelf(new S2CGrabStatePacket(grabber.getUUID(), false), grabber);
+        }
+        if (grabbed != null) {
+            GrabState.setGrabbedBy(grabbed, null);
+            grabbed.setNoGravity(false);
+        }
     }
 
     private static ServerPlayer findTarget(ServerPlayer grabber) {
